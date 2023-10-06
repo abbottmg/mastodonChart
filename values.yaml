@@ -323,6 +323,10 @@ mastodon:
         enabled: false
         port: 9102
 
+  elasticsearch:
+    preset: small_cluster
+    port: 9200
+
   # Sets the PREPARED_STATEMENTS environment variable: https://docs.joinmastodon.org/admin/config/#prepared_statements
   preparedStatements: true
 
