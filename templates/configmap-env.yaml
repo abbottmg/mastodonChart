@@ -20,7 +20,8 @@ data:
   {{- if .Values.elasticsearch.enabled }}
   ES_ENABLED: "true"
   ES_HOST: {{ template "mastodon.elasticsearch.fullname" . }}
-  ES_PORT: "9200"
+  ES_PRESET: {{ .Values.mastodon.elasticsearch.preset | default "small_cluster" }}
+  ES_PORT: {{ .Values.mastodon.elasticsearch.port | default 9200 | quote }}
   {{- end }}
   LOCAL_DOMAIN: {{ .Values.mastodon.local_domain }}
   {{- with .Values.mastodon.web_domain }}
