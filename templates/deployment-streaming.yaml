@@ -97,9 +97,9 @@ spec:
               value: {{ . }}
             {{- end }}
             {{- end }}
-            {{- with .Values.postgresql.postgresqlReplicaHostname }}
+            {{- if (or .Values.postgresql.readReplica.hostname .Values.postgresql.postgresqlReplicaHostname) }}
             - name: "DB_HOST"
-              value: {{ . }}
+              value: {{ (coalesce .Values.postgresql.readReplica.hostname .Values.postgresql.postgresqlReplicaHostname) }}
             {{- end }}
             - name: "DB_PASS"
               valueFrom:
